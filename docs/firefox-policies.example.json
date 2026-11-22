@@ -1,0 +1,20 @@
+{
+  "policies": {
+    "ExtensionSettings": {
+      "klarsyn@klarsyn.extension": {
+        "installation_mode": "force_installed",
+        "install_url": "file:///C:/ProgramData/Klarsyn/klarsyn.xpi"
+      }
+    },
+    "3rdparty": {
+      "Extensions": {
+        "klarsyn@klarsyn.extension": {
+          "enabled": true,
+          "lockSettings": true,
+          "categories": { "general.chat": true },
+          "customBlockedDomains": []
+        }
+      }
+    }
+  }
+}

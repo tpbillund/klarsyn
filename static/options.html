@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Klarsyn</title>
+  <link rel="icon" href="icons/icon-32.png">
+  <link rel="stylesheet" href="ui.css">
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="page">
+    <header class="page-head">
+      <div class="brand">
+        <img src="icons/icon-128.png" alt="">
+        <div>
+          <div class="brand-name" data-i18n="appName">Klarsyn</div>
+          <div class="brand-tag" data-i18n="tagline">AI-fri søgning</div>
+        </div>
+      </div>
+      <div class="head-right">
+        <span id="statusPill" class="pill"></span>
+        <span id="version" class="small muted"></span>
+      </div>
+    </header>
+
+    <div id="managedBanner" class="banner info hidden" role="note">
+      <strong data-i18n="managedTitle"></strong>
+      <span data-i18n="managedText"></span>
+    </div>
+
+    <form id="lockBanner" class="banner lock hidden" autocomplete="off">
+      <div>
+        <strong data-i18n="lockedTitle"></strong>
+        <span data-i18n="lockedText"></span>
+      </div>
+      <div class="inline">
+        <input id="unlockInput" type="password" inputmode="numeric" maxlength="12" data-i18n-aria="pinPrompt">
+        <button class="btn primary" type="submit" data-i18n="unlock"></button>
+      </div>
+      <div id="unlockMsg" class="msg err" role="status"></div>
+    </form>
+
+    <section class="card">
+      <h2 data-i18n="secEngines"></h2>
+      <p class="muted lead" data-i18n="secEnginesHelp"></p>
+      <div class="grid" role="table">
+        <div class="grid-row head" role="row">
+          <span role="columnheader" data-i18n="colEngine"></span>
+          <span role="columnheader" data-i18n="colAnswers"></span>
+          <span role="columnheader" data-i18n="colChat"></span>
+        </div>
+        <div id="engineRows"></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2 data-i18n="secExtra"></h2>
+      <div id="extraRows" class="rows"></div>
+    </section>
+
+    <section class="card">
+      <h2 data-i18n="secCustom"></h2>
+      <p class="muted lead" data-i18n="customHelp"></p>
+      <form id="customForm" class="custom-form" autocomplete="off">
+        <input id="customInput" type="text" spellcheck="false" data-i18n-placeholder="customPlaceholder" data-i18n-aria="customPlaceholder">
+        <button class="btn primary" type="submit" data-i18n="customAdd"></button>
+      </form>
+      <div id="customMsg" class="msg" role="status"></div>
+      <ul id="customList" class="chips"></ul>
+      <p id="customEmpty" class="muted small" data-i18n="customEmpty"></p>
+    </section>
+
+    <section class="card">
+      <h2 data-i18n="secLook"></h2>
+      <div class="rows">
+        <div class="setting">
+          <div class="setting-text"><span class="setting-title" data-i18n="optLanguage"></span></div>
+          <div class="segmented" id="langSeg" role="group">
+            <button type="button" data-value="da" aria-pressed="false">Dansk</button>
+            <button type="button" data-value="en" aria-pressed="false">English</button>
+          </div>
+        </div>
+        <div class="setting">
+          <div class="setting-text"><span class="setting-title" data-i18n="optTheme"></span></div>
+          <div class="segmented" id="themeSeg" role="group">
+            <button type="button" data-value="auto" aria-pressed="false" data-i18n="themeAuto"></button>
+            <button type="button" data-value="light" aria-pressed="false" data-i18n="themeLight"></button>
+            <button type="button" data-value="dark" aria-pressed="false" data-i18n="themeDark"></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2 data-i18n="secPin"></h2>
+      <p class="muted lead" data-i18n="pinHelp"></p>
+      <p id="pinState" class="pin-state"></p>
+      <form id="pinForm" class="pin-form" autocomplete="off">
+        <input id="pinNew" type="password" inputmode="numeric" maxlength="12" data-i18n-placeholder="pinNew" data-i18n-aria="pinNew">
+        <input id="pinRepeat" type="password" inputmode="numeric" maxlength="12" data-i18n-placeholder="pinRepeat" data-i18n-aria="pinRepeat">
+        <button class="btn primary" type="submit" data-i18n="pinSave"></button>
+        <button class="btn danger" type="button" id="pinRemove" data-i18n="pinRemove"></button>
+      </form>
+      <div id="pinMsg" class="msg" role="status"></div>
+    </section>
+
+    <section class="card limits">
+      <h2 data-i18n="secLimits"></h2>
+      <ul>
+        <li data-i18n="limit1"></li>
+        <li data-i18n="limit2"></li>
+        <li data-i18n="limit3"></li>
+      </ul>
+    </section>
+
+    <footer class="page-foot">
+      <span class="small muted" data-i18n="localOnly"></span>
+      <button id="reset" class="btn" type="button" data-i18n="reset"></button>
+    </footer>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="vendor/browser-polyfill.min.js"></script>
+  <script src="shared/ns.js"></script>
+  <script src="shared/match.js"></script>
+  <script src="shared/rules.js"></script>
+  <script src="shared/policy.js"></script>
+  <script src="shared/i18n.js"></script>
+  <script src="shared/pin.js"></script>
+  <script src="shared/store.js"></script>
+  <script src="shared/ui.js"></script>
+  <script src="ui/options.js"></script>
+</body>
+</html>

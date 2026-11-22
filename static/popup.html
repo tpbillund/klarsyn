@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Klarsyn</title>
+  <link rel="stylesheet" href="ui.css">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header class="top">
+    <div class="brand">
+      <img src="icons/icon-48.png" alt="">
+      <div>
+        <div class="brand-name" data-i18n="appName">Klarsyn</div>
+        <div class="brand-tag" data-i18n="tagline">AI-fri søgning</div>
+      </div>
+    </div>
+    <div class="segmented" role="group" aria-label="Sprog / Language">
+      <button type="button" data-lang="da" aria-pressed="false">DA</button>
+      <button type="button" data-lang="en" aria-pressed="false">EN</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="card">
+      <div class="pills">
+        <span id="statusPill" class="pill"></span>
+        <span id="managedPill" class="pill managed hidden" data-i18n="statusManaged"></span>
+      </div>
+      <label class="master">
+        <span data-i18n="masterLabel">Klarsyn er slået til</span>
+        <span class="switch">
+          <input id="master" type="checkbox" role="switch">
+          <span class="track"></span>
+        </span>
+      </label>
+      <form id="pinBox" class="pin-box hidden" autocomplete="off">
+        <label for="pinInput" class="small muted" data-i18n="pinPrompt">Indtast admin-PIN</label>
+        <div class="pin-row">
+          <input id="pinInput" type="password" inputmode="numeric" maxlength="12">
+          <button class="btn primary" type="submit" data-i18n="ok">OK</button>
+          <button class="btn" type="button" id="pinCancel" data-i18n="cancel">Annuller</button>
+        </div>
+        <div id="pinMsg" class="msg err" role="status"></div>
+      </form>
+    </section>
+
+    <section class="card site">
+      <div class="small muted" data-i18n="siteLabel">Denne side</div>
+      <div id="siteHost" class="site-host"></div>
+      <ul id="siteRows" class="site-rows"></ul>
+      <p id="siteUnknown" class="muted hidden" data-i18n="siteUnknown"></p>
+      <p id="reloadHint" class="small muted hidden" data-i18n="reloadHint"></p>
+    </section>
+
+    <button id="openOptions" class="btn wide" type="button" data-i18n="openSettings">Indstillinger</button>
+  </main>
+
+  <footer class="small muted" data-i18n="localOnly"></footer>
+
+  <script src="vendor/browser-polyfill.min.js"></script>
+  <script src="shared/ns.js"></script>
+  <script src="shared/match.js"></script>
+  <script src="shared/rules.js"></script>
+  <script src="shared/policy.js"></script>
+  <script src="shared/i18n.js"></script>
+  <script src="shared/pin.js"></script>
+  <script src="shared/store.js"></script>
+  <script src="shared/ui.js"></script>
+  <script src="ui/popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,156 @@
+.page {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 32px 20px 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.page-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+.page-head .brand img { width: 48px; height: 48px; border-radius: 12px; }
+.page-head .brand-name { font-size: 22px; }
+.head-right { display: flex; align-items: center; gap: 12px; }
+
+.card h2 { font-size: 16px; margin-bottom: 4px; }
+.lead { margin: 0 0 14px; }
+
+.banner {
+  border-radius: var(--radius);
+  padding: 14px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border: 1px solid var(--border);
+}
+.banner strong { margin-right: 6px; }
+.banner.info { background: var(--accent-soft); color: var(--accent-strong); border-color: transparent; }
+.banner.lock { background: var(--warn-soft); border-color: transparent; }
+.banner .inline { display: flex; gap: 8px; flex-wrap: wrap; }
+
+/* Søgemaskine-gitter */
+.grid-row {
+  display: grid;
+  grid-template-columns: 1fr 130px 130px;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 4px;
+  border-top: 1px solid var(--border);
+}
+.grid-row.head {
+  border-top: 0;
+  padding-top: 0;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.grid-row > :not(:first-child) { justify-self: center; text-align: center; }
+.engine-name { font-weight: 600; display: flex; align-items: center; gap: 10px; }
+.engine-dot {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  font-size: 13px;
+  font-weight: 700;
+  background: var(--surface-2);
+  color: var(--accent-strong);
+}
+.na { color: var(--muted); }
+
+/* Indstillingsrækker */
+.rows { display: flex; flex-direction: column; }
+.setting {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 0;
+  border-top: 1px solid var(--border);
+}
+.rows > .setting:first-child { border-top: 0; }
+.setting-text { display: flex; flex-direction: column; }
+.setting-title { font-weight: 600; }
+.setting-help { font-size: 13px; color: var(--muted); }
+
+/* Egne blokerede sider */
+.custom-form { display: flex; gap: 8px; flex-wrap: wrap; }
+.custom-form input { flex: 1 1 220px; }
+.chips { list-style: none; margin: 8px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.chips li {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 6px 5px 12px;
+  border-radius: 999px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  font-weight: 600;
+  font-size: 13px;
+}
+.chips li.managed { padding-right: 12px; background: var(--accent-soft); color: var(--accent-strong); border-color: transparent; }
+.chip-x {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font: inherit;
+  font-size: 15px;
+  line-height: 1;
+  cursor: pointer;
+}
+.chip-x:hover { background: var(--border); color: var(--text); }
+.chip-x:disabled { display: none; }
+
+/* PIN */
+.pin-state { margin: 0 0 10px; font-weight: 600; }
+.pin-form { display: flex; flex-wrap: wrap; gap: 8px; }
+.pin-form input { flex: 1 1 160px; }
+
+/* Begrænsninger: skal være tydelige, ikke småt */
+.limits { border-left: 4px solid var(--warn); }
+.limits ul { margin: 8px 0 0; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; }
+
+.page-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 4px 4px 0;
+}
+
+fieldset.locked { opacity: 0.55; pointer-events: none; }
+
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  transform: translate(-50%, 20px);
+  background: var(--text);
+  color: var(--bg);
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-weight: 600;
+  opacity: 0;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  pointer-events: none;
+}
+.toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+@media (max-width: 560px) {
+  .grid-row { grid-template-columns: 1fr 70px 70px; }
+  .grid-row.head { font-size: 10px; }
+  .page-head { flex-direction: column; align-items: flex-start; }
+}

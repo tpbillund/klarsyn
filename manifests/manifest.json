@@ -1,0 +1,131 @@
+{
+  "manifest_version": 3,
+  "name": "Klarsyn",
+  "short_name": "Klarsyn",
+  "version": "1.2.0",
+  "description": "Skjuler AI-svar og blokerer AI-chat på søgemaskiner. Alt kører lokalt i browseren.",
+  "minimum_chrome_version": "120",
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Klarsyn",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png",
+      "48": "icons/icon-48.png"
+    }
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
+  "background": {
+    "service_worker": "background/background.js"
+  },
+  "permissions": [
+    "storage",
+    "activeTab",
+    "declarativeNetRequest"
+  ],
+  "storage": {
+    "managed_schema": "managed_schema.json"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://www.google.com/*",
+        "*://google.com/*",
+        "*://www.google.dk/*",
+        "*://google.dk/*",
+        "*://www.google.de/*",
+        "*://google.de/*",
+        "*://www.google.se/*",
+        "*://google.se/*",
+        "*://www.google.no/*",
+        "*://google.no/*",
+        "*://www.google.fi/*",
+        "*://google.fi/*",
+        "*://www.google.is/*",
+        "*://google.is/*",
+        "*://www.google.nl/*",
+        "*://google.nl/*",
+        "*://www.google.be/*",
+        "*://google.be/*",
+        "*://www.google.fr/*",
+        "*://google.fr/*",
+        "*://www.google.es/*",
+        "*://google.es/*",
+        "*://www.google.it/*",
+        "*://google.it/*",
+        "*://www.google.at/*",
+        "*://google.at/*",
+        "*://www.google.ch/*",
+        "*://google.ch/*",
+        "*://www.google.pl/*",
+        "*://google.pl/*",
+        "*://www.google.ie/*",
+        "*://google.ie/*",
+        "*://www.google.co.uk/*",
+        "*://google.co.uk/*",
+        "*://www.google.ca/*",
+        "*://google.ca/*",
+        "*://www.google.com.au/*",
+        "*://google.com.au/*",
+        "*://*.bing.com/*",
+        "*://copilot.microsoft.com/*",
+        "*://*.duckduckgo.com/*",
+        "*://*.duck.ai/*",
+        "*://*.ecosia.org/*",
+        "*://search.yahoo.com/*",
+        "*://*.search.yahoo.com/*",
+        "*://scout.yahoo.com/*",
+        "*://*.chatgpt.com/*",
+        "*://chat.openai.com/*",
+        "*://gemini.google.com/*",
+        "*://*.claude.ai/*",
+        "*://*.perplexity.ai/*",
+        "*://chat.mistral.ai/*",
+        "*://chat.deepseek.com/*",
+        "*://*.meta.ai/*",
+        "*://*.grok.com/*",
+        "*://*.manus.im/*",
+        "*://*.genspark.ai/*",
+        "*://*.character.ai/*",
+        "*://*.poe.com/*",
+        "*://*.deepai.org/*",
+        "*://*.janitorai.com/*",
+        "*://chat.qwen.ai/*",
+        "*://*.kimi.com/*",
+        "*://kimi.moonshot.cn/*",
+        "*://*.you.com/*",
+        "*://*.phind.com/*",
+        "*://*.pi.ai/*",
+        "*://*.monica.im/*",
+        "*://chat.z.ai/*",
+        "*://*.lmarena.ai/*",
+        "*://*.felo.ai/*",
+        "*://notebooklm.google.com/*",
+        "*://aistudio.google.com/*",
+        "*://huggingface.co/*"
+      ],
+      "js": [
+        "vendor/browser-polyfill.min.js",
+        "shared/ns.js",
+        "shared/match.js",
+        "shared/rules.js",
+        "shared/policy.js",
+        "shared/i18n.js",
+        "shared/store.js",
+        "content/overlay.js",
+        "content/content.js"
+      ],
+      "run_at": "document_start",
+      "all_frames": false
+    }
+  ]
+}
